@@ -23,7 +23,6 @@ class RequestAssistance(BaseModel):
     """
     request: str
     
-
 tool = TavilySearchResults(max_results=2)
 tools = [tool] 
 llm = ChatAnthropic(model="claude-3-5-sonnet-20240620")
