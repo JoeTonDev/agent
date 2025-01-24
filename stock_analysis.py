@@ -56,3 +56,34 @@ def get_stock_prices(ticker: str) -> Union[Dict, str]:
         
     except Exception as e:
         return f"Error fetching price data: {str(e)}"
+
+class State(TypedDict):
+        messages: Annotated[list, add_messages]
+        stock: str
+    
+graph_builder = StateGraph(state)
+    
+tools = [get_stock_prices, get_financial_metrics]
+llm = ChatOpenAI(model='gpt-4o-mini')
+llm_with_tool = llm.bind_tools(tools)
+    
+def fundamental_analyst(state: State):
+        messages = [
+        SystemMessage(content=FUNDAMENTAL_ANALYST_PROMPT.format(company=state['stock'])),
+                    ] + state['messages']
+        return {
+            'messgers': llm_with_tool.invoke(messages)
+        }
+        
+graph_builder.add_node('fundamental_analyst', fundamental_analyst)
+graph_builder.add_edge(START, 'fundamental_analyst')
+graph_builder.add_node(ToolNode(tools))
+graph_builder.add_conditional_edges('fundamental_analyst', tools_condition)
+graph_builder.add_edge('tools', 'fundamental_analyst')
+    
+graph = graph_builder.compile()
+events = graph.stream({'messages':[('user', 'Should I buy this stock?')],
+        'stock': 'TSLA'}, stream_mode='values')
+for event in events:
+        if 'messages' in event:
+            event['messages'][-1].pretty_print()
