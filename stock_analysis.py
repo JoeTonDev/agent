@@ -77,7 +77,7 @@ def fundamental_analyst(state: State):
         
 graph_builder.add_node('fundamental_analyst', fundamental_analyst)
 graph_builder.add_edge(START, 'fundamental_analyst')
-graph_builder.add_node(ToolNode(tools))
+
 graph_builder.add_conditional_edges('fundamental_analyst', tools_condition)
 graph_builder.add_edge('tools', 'fundamental_analyst')
     
