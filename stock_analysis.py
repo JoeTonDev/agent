@@ -67,13 +67,7 @@ tools = [get_stock_prices, get_financial_metrics]
 llm = ChatOpenAI(model='gpt-4o-mini')
 llm_with_tool = llm.bind_tools(tools)
     
-def fundamental_analyst(state: State):
-        messages = [
-        SystemMessage(content=FUNDAMENTAL_ANALYST_PROMPT.format(company=state['stock'])),
-                    ] + state['messages']
-        return {
-            'messgers': llm_with_tool.invoke(messages)
-        }
+
         
 graph_builder.add_node('fundamental_analyst', fundamental_analyst)
 graph_builder.add_edge(START, 'fundamental_analyst')
