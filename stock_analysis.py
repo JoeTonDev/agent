@@ -63,10 +63,7 @@ class State(TypedDict):
     
 graph_builder = StateGraph(state)
     
-tools = [get_stock_prices, get_financial_metrics]
-llm = ChatOpenAI(model='gpt-4o-mini')
-llm_with_tool = llm.bind_tools(tools)
-    
+
 
         
 
