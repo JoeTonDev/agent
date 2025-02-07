@@ -61,7 +61,7 @@ class State(TypedDict):
         messages: Annotated[list, add_messages]
         stock: str
     
-graph_builder = StateGraph(state)
+
     
 
 
