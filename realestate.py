@@ -122,6 +122,24 @@ class OfferAgent:
             conditions=["Subject to inspection", "Subject to financing"],
             closing_date="2022-12-31"
         )
+     
+    def validate_offer_details(self, offer_details: OfferDetails) -> List[str]:
+        """Validate the offer details for completeness and correctness."""
+        errors = []
+        
+        if not offer_details.buyer_name or len(offer_details.buyer_name) < 2:
+            errors.append("Buyer name is missing or too short.")
+            
+        if not offer_details.seller_name or len(offer_details.seller_name) < 2:
+            errors.append("Seller name is missing or too short.")
+            
+        if not offer_details.property_address or len(offer_details.property_address) < 5:
+            errors.append("Property address is missing or too short.")
+            
+        if not offer_details.offer_price or offer_details.offer_price <= 0:
+            errors.append("Offer price is missing or invalid.")
+            
+        return errors
         
     def prepare_documents(self, state: State):
         """Prepare all offer documents"""
