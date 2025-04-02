@@ -87,7 +87,7 @@ PDF_TEMPLATES = {
     "deposit_receipt": "deposit_receipt.pdf",
     "conditions_form": "conditions_form.pdf",
 }
-
+# Define the directory paths for templates and output
 TEMPLATE_DIR = "/path/to/pdf/templates"
 OUTPUT_DIR = "/path/to/output/pdfs"
 
