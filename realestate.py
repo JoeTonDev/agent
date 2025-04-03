@@ -91,6 +91,7 @@ PDF_TEMPLATES = {
 TEMPLATE_DIR = "/path/to/pdf/templates"
 OUTPUT_DIR = "/path/to/output/pdfs"
 
+#   Define the agent class
 class OfferAgent:
     def __init__(self):
         self.pdf_handler = PDFHandler(TEMPLATE_DIR)
