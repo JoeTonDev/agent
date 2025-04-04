@@ -91,7 +91,7 @@ PDF_TEMPLATES = {
 TEMPLATE_DIR = "/path/to/pdf/templates"
 OUTPUT_DIR = "/path/to/output/pdfs"
 
-#   Define the agent class
+#  Define the agent class
 class OfferAgent:
     def __init__(self):
         self.pdf_handler = PDFHandler(TEMPLATE_DIR)
@@ -123,7 +123,8 @@ class OfferAgent:
             conditions=["Subject to inspection", "Subject to financing"],
             closing_date="2022-12-31"
         )
-     
+    
+    # Validate the offer details 
     def validate_offer_details(self, offer_details: OfferDetails) -> List[str]:
         """Validate the offer details for completeness and correctness."""
         errors = []
