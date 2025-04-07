@@ -71,6 +71,7 @@ planner.invoke(
     }
 )
 
+# The plan is a list of steps to follow
 class Response(BaseModel):
     """Response to user."""
 
