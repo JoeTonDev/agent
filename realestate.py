@@ -221,7 +221,7 @@ class OfferAgent:
                 "messages": [SystemMessage(content=f"An error occurred while emailing the offer documents: {str(e)}.")],
                 "errors": [str(e)]
             }
-    
+# Define the workflow    
 def setup_workflow():
         """Set up the Langgraph workflow"""
         agent = OfferAgent()
