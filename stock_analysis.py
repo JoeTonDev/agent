@@ -57,6 +57,7 @@ def get_stock_prices(ticker: str) -> Union[Dict, str]:
     except Exception as e:
         return f"Error fetching price data: {str(e)}"
 
+# 
 class State(TypedDict):
         messages: Annotated[list, add_messages]
         stock: str
