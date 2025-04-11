@@ -187,6 +187,7 @@ class OfferAgent:
                 "errors": [str(e)]
             }
     
+    # Email the completed documents
     def email_documents(self, state: State):
         """Email the completed documents to the buyer and seller."""
         try:
