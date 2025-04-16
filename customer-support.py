@@ -16,7 +16,9 @@ class State(TypedDict):
     category: str
     sentiment: str
     response: str
-#       
+
+
+# Define the customer query      
 def categorize(state: State) -> State:
     """Categorize the customer query into Technical, Billing, or General."""
     prompt = ChatPromptTemplate.from_template(
