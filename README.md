@@ -1,1 +1,1 @@
-Agentic AI projects.
+Agentic AI personal projects.
